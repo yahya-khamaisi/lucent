@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.yahyakhamaisi.lucent</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>lucent</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Lucent finds and controls TVs and AV receivers on your network.</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Lucent asks for an administrator password to install the command-line tool and display overrides.</string>
+</dict>
+</plist>
