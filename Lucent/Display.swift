@@ -79,9 +79,14 @@ struct Display: Identifiable, Equatable {
             .filter { seen.insert($0.refreshLabel).inserted }
     }
 
+    /// Whether the panel has a notch. While the notch is hidden (letterboxed mode) the
+    /// screen reports no safe-area inset, so also look for the paired full-height and
+    /// letterboxed modes that only notched panels offer.
     var hasNotch: Bool {
-        guard #available(macOS 12.0, *), let screen else { return false }
-        return screen.safeAreaInsets.top > 0
+        if #available(macOS 12.0, *), let screen, screen.safeAreaInsets.top > 0 { return true }
+        guard isBuiltin else { return false }
+        let byWidth = Dictionary(grouping: allModes.filter(\.isHiDPI), by: \.width)
+        return byWidth.values.contains { Set($0.map(\.height)).count > 1 }
     }
 
     var edrHeadroom: CGFloat { screen?.maximumPotentialExtendedDynamicRangeColorComponentValue ?? 1 }
